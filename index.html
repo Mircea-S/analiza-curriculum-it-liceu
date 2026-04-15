@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analiza Curriculumului de Informatică și TIC din Învățământul Liceal Românesc</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary: #fafbff;
+  --bg-secondary: rgba(248, 250, 252, 0.9);
+  --bg-tertiary: rgba(241, 245, 249, 0.95);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-accent: #475569;
+  --cyber-primary: #0066ff;
+  --cyber-secondary: rgba(0, 102, 255, 0.15);
+  --neon-primary: #ff0080;
+  --neon-secondary: rgba(255, 0, 128, 0.15);
+  --electric-purple: #8b5cf6;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --border-color: rgba(0, 102, 255, 0.3);
+  --border-glow: rgba(0, 102, 255, 0.2);
+  --shadow-cyber: rgba(0, 102, 255, 0.1);
+  --shadow-neon: rgba(255, 0, 128, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, #fafbff, #f0f9ff, #fdf2f8);
+  min-height: 100vh;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout shell ──────────────────────────────────────────── */
+.page-wrapper {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .page-wrapper { padding: 3rem 2rem 6rem; }
+}
+
+/* ── Glass card for the article ────────────────────────────── */
+.article-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px var(--shadow-cyber);
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .article-card { padding: 3rem 3.5rem; }
+}
+
+/* ── Table of contents ─────────────────────────────────────── */
+.toc-container {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 12px var(--shadow-cyber);
+}
+
+.toc-container > .toc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.toc-container ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-container ul ul {
+  padding-left: 1.25rem;
+}
+
+.toc-container li {
+  margin: 0.2rem 0;
+}
+
+.toc-container a {
+  color: var(--cyber-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  transition: color 0.2s;
+}
+
+.toc-container a:hover {
+  color: var(--neon-primary);
+}
+
+/* ── Prose styles ──────────────────────────────────────────── */
+
+/* Headings */
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ff0080, #0066ff, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.prose h2 {
+  font-size: 1.55rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.prose h4 {
+  font-size: 1.1rem;
+}
+
+/* Subtitle / meta below h1 */
+.prose h1 + p {
+  color: var(--text-accent);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+/* Paragraphs */
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+/* Strong */
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Links */
+.prose a {
+  color: var(--cyber-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.prose a:hover {
+  color: var(--neon-primary);
+}
+
+/* Lists */
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.35rem;
+}
+
+.prose ul li::marker {
+  color: var(--neon-primary);
+}
+
+.prose ol li::marker {
+  color: var(--cyber-primary);
+  font-weight: 600;
+}
+
+.prose li > ul, .prose li > ol {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+}
+
+/* Horizontal rules */
+.prose hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 2.5rem 0;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  border-left: 4px solid var(--cyber-primary);
+  background: var(--cyber-secondary);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Inline code */
+.prose code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  color: var(--neon-primary);
+  background: var(--neon-secondary);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  font-weight: 500;
+}
+
+/* Code blocks */
+.prose pre {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  color: var(--text-primary);
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+/* ── Tables ────────────────────────────────────────────────── */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-cyber);
+}
+
+.prose thead {
+  background: var(--cyber-secondary);
+}
+
+.prose th {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+  vertical-align: top;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:hover {
+  background: rgba(0, 102, 255, 0.04);
+}
+
+/* Responsive table wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+}
+
+.table-wrapper table {
+  margin: 0;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 2rem 0 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-accent);
+  font-size: 0.8rem;
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  body { background: white; }
+  .article-card { box-shadow: none; border: none; padding: 0; }
+  .toc-container { break-inside: avoid; }
+  .prose h2, .prose h3 { break-after: avoid; }
+  .prose table { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <article class="article-card">
+    <nav class="toc-container">
+      <div class="toc-title">Cuprins</div>
+      <div class="toc">
+<ul>
+<li><a href="#analiza-curriculumului-de-informatica-si-tic-din-invatamantul-liceal-romanesc">Analiza Curriculumului de Informatică și TIC din Învățământul Liceal Românesc</a><ul>
+<li><a href="#pregatirea-elevilor-pentru-era-inteligentei-artificiale-o-analiza-critica-a-proiectelor-de-programe-scolare-2026">Pregătirea elevilor pentru era inteligenței artificiale: o analiză critică a proiectelor de programe școlare 2026</a></li>
+<li><a href="#1-rezumat">1. Rezumat</a></li>
+<li><a href="#2-obiect-si-metodologie">2. Obiect și metodologie</a></li>
+<li><a href="#3-prezentarea-curriculumului-pe-filiere">3. Prezentarea curriculumului pe filiere</a></li>
+<li><a href="#4-puncte-forte">4. Puncte forte</a></li>
+<li><a href="#5-puncte-slabe">5. Puncte slabe</a></li>
+<li><a href="#6-lacune-critice-pentru-era-inteligentei-artificiale">6. Lacune critice pentru era inteligenței artificiale</a></li>
+<li><a href="#7-comparatie-internationala">7. Comparație internațională</a></li>
+<li><a href="#8-recomandari">8. Recomandări</a></li>
+<li><a href="#9-anexa-inventarul-complet-al-temelor-pe-documente">9. Anexă: Inventarul complet al temelor pe documente</a></li>
+<li><a href="#10-concluzii">10. Concluzii</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </nav>
+    <div class="prose">
+      <h1 id="analiza-curriculumului-de-informatica-si-tic-din-invatamantul-liceal-romanesc">Analiza Curriculumului de Informatică și TIC din Învățământul Liceal Românesc</h1>
+<h2 id="pregatirea-elevilor-pentru-era-inteligentei-artificiale-o-analiza-critica-a-proiectelor-de-programe-scolare-2026">Pregătirea elevilor pentru era inteligenței artificiale: o analiză critică a proiectelor de programe școlare 2026</h2>
+<p><strong>Data:</strong> aprilie 2026
+<strong>Obiect:</strong> 13 documente curriculare publicate de ROCNEE pentru consultare publică (februarie 2026)
+<strong>Arie tematică:</strong> Informatică și Tehnologia Informației și a Comunicațiilor, clasele IX-XII</p>
+<hr />
+<h2 id="1-rezumat">1. Rezumat</h2>
+<ul>
+<li><strong>Proiectele de programe școlare de informatică din 2026 sunt puternice pe plan algoritmic.</strong> Filiera intensivă acoperă teoria grafurilor, programarea dinamică, backtracking și învățarea automată până în clasa a XII-a — mai în profunzime decât multe programe europene obligatorii (de ex. GCSE Computer Science din Anglia), deși comparabilă cu filierele de specialitate puternice precum NSI din Franța.</li>
+<li><strong>Inteligența artificială și învățarea automată sunt prezente, dar apar prea târziu.</strong> Învățarea automată (K-means, KNN, regresie liniară, rețele neuronale) apare abia în clasa a XII-a. Elevii petrec trei ani fără a înțelege tehnologia care transformă fiecare industrie.</li>
+<li><strong>Pregătirea pentru colaborarea om-IA este doar declarativă, nu operațională.</strong> Programele școlare menționează utilizarea responsabilă a IA și fac referiri punctuale la instrumente IA, dar nu predau niciodată în mod structurat ingineria prompturilor, alfabetizarea în domeniul modelelor lingvistice mari (LLM), fluxurile de lucru asistate de IA pentru programare sau evaluarea critică a rezultatelor generate de IA — competențe deja esențiale în 2026.</li>
+<li><strong>Practicile de inginerie software sunt complet absente.</strong> Nicio mențiune despre controlul versiunilor (git), testare, CI/CD, revizuirea codului, proiectarea de API-uri sau publicarea aplicațiilor. Elevii învață algoritmi izolat de modul în care se construiește software-ul în realitate.</li>
+<li><strong>Trunchiul comun TIC este supraîncărcat și subfinanțat.</strong> La o oră pe săptămână, încearcă să acopere securitate cibernetică, dezvoltare web, baze de date, IoT, robotică, rețele, programare vizuală și multimedia — un domeniu imposibil de larg care garantează o acoperire superficială.</li>
+<li><strong>Elevii din afara profilului informatică sunt lăsați în urmă.</strong> Profilul științe ale naturii beneficiază de doar două ore pe săptămână repartizate pe clasele a IX-a și a X-a (câte 1 oră/săptămână). Într-o eră în care fiecare profesionist are nevoie de alfabetizare în lucrul cu date și de înțelegerea inteligenței artificiale, acest lucru este insuficient.</li>
+</ul>
+<hr />
+<h2 id="2-obiect-si-metodologie">2. Obiect și metodologie</h2>
+<h3 id="documente-analizate">Documente analizate</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Document</th>
+<th>Filieră/Profil</th>
+<th>Clasa</th>
+<th>Ore/săpt.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Anexa 41 — TIC X</td>
+<td>Trunchi comun (TC)</td>
+<td>a X-a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Anexa 42 — TIC XI</td>
+<td>Trunchi comun (TC)</td>
+<td>a XI-a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Anexa 43 — TIC XII</td>
+<td>Trunchi comun (TC)</td>
+<td>a XII-a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Anexa 44 — Informatică X CS_MI</td>
+<td>Matematică-Informatică</td>
+<td>a X-a</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Anexa 45 — Informatică X CS_MI_MLT</td>
+<td>Matematică-Informatică (Militar)</td>
+<td>a X-a</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Anexa 46 — Informatică XI CS_MI</td>
+<td>Matematică-Informatică</td>
+<td>a XI-a</td>
+<td>4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Anexa 47 — Informatică XI CS_MI_MLT</td>
+<td>Matematică-Informatică (Militar)</td>
+<td>a XI-a</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Anexa 48 — Informatică XII CS_MI/MLT</td>
+<td>Matematică-Informatică (Ambele)</td>
+<td>a XII-a</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Anexa 49 — Informatică IX CS_MI_INT</td>
+<td>Intensiv</td>
+<td>a IX-a</td>
+<td>4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Anexa 50 — Informatică X CS_MI_INT</td>
+<td>Intensiv</td>
+<td>a X-a</td>
+<td>4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Anexa 51 — Informatică XI CS_MI_INT</td>
+<td>Intensiv</td>
+<td>a XI-a</td>
+<td>7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Anexa 52 — Informatică XII CS_MI_INT</td>
+<td>Intensiv</td>
+<td>a XII-a</td>
+<td>7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Anexa 53 — Informatică X CS_SN</td>
+<td>Științe ale naturii</td>
+<td>a X-a</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="prezentarea-generala-a-filierelor">Prezentarea generală a filierelor</h3>
+<p>Sistemul liceal românesc oferă educație în informatică/TIC pe patru filiere distincte, cu profunzimi dramatic diferite:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Filieră</th>
+<th>Elevi vizați</th>
+<th>Total ore informatică (4 ani)</th>
+<th>Acoperire IA/ML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TIC (Trunchi comun)</strong></td>
+<td>Toți elevii</td>
+<td>~108 ore (36/an x 3 ani)</td>
+<td>Mențiuni de suprafață</td>
+</tr>
+<tr>
+<td><strong>CS_MI (Regulat)</strong></td>
+<td>Profilul matematică-informatică</td>
+<td>~324 ore</td>
+<td>Modul în clasa a XII-a</td>
+</tr>
+<tr>
+<td><strong>CS_MI_INT (Intensiv)</strong></td>
+<td>Matematică-informatică intensiv</td>
+<td>~792 ore</td>
+<td>Integral în clasa a XII-a + rețele neuronale</td>
+</tr>
+<tr>
+<td><strong>CS_SN (Științe ale naturii)</strong></td>
+<td>Profilul științe ale naturii</td>
+<td>~72 ore (2 ani, câte 1 oră/săpt.)</td>
+<td>Minimal</td>
+</tr>
+</tbody>
+</table></div>
+<p>Diferența dintre filiera intensivă (792 ore) și științe ale naturii (72 ore) este de <strong>11 ori</strong>. Aceasta este cea mai izbitoare caracteristică structurală a curriculumului.</p>
+<hr />
+<h2 id="3-prezentarea-curriculumului-pe-filiere">3. Prezentarea curriculumului pe filiere</h2>
+<h3 id="31-tic-trunchi-comun-toti-elevii">3.1 TIC — Trunchi comun (Toți elevii)</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Clasa</th>
+<th>Domeniul 1: Societatea digitală</th>
+<th>Domeniul 2: Conținut digital</th>
+<th>Domeniul 3: Sisteme de calcul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>a X-a</strong></td>
+<td>Securitate cibernetică, identitate digitală, navigare web, gestionarea cookie-urilor</td>
+<td>Pagini web HTML/CSS/JS, foi de calcul (avansat), imagini digitale (2D/3D)</td>
+<td>Întreținerea echipamentelor hardware, depanare, programe utilitare</td>
+</tr>
+<tr>
+<td><strong>a XI-a</strong></td>
+<td>Modelarea informatică (economică, de mediu, sisteme expert)</td>
+<td>Procesare audio, procesare video, baze de date (SGBD, noțiuni de SQL)</td>
+<td>Arhitectura IoT (senzori, actuatori, cloud), noțiuni de robotică</td>
+</tr>
+<tr>
+<td><strong>a XII-a</strong></td>
+<td>Semnătura digitală, e-guvernare, CV digital, ciclul de viață al dezvoltării produselor</td>
+<td>Programare vizuală (C# Windows Forms, MIT App Inventor), proiectare GUI</td>
+<td>Rețele de calculatoare (LAN/WAN, TCP/IP, configurare Wi-Fi, diagnosticare)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="32-cs_mi-profilul-real-specializarea-matematica-informatica-regulat">3.2 CS_MI — Profilul real, specializarea matematică-informatică (regulat)</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Clasa</th>
+<th>Organizarea datelor</th>
+<th>Algoritmi și rezolvarea problemelor</th>
+<th>Programare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>a X-a</strong></td>
+<td>Mulțimi, șiruri de caractere, dicționare, modele mixte (liste de liste, dicționare de liste)</td>
+<td>Căutare binară, interclasare, divide et impera, metoda greedy</td>
+<td>Python (set, str, dict), subprograme recursive</td>
+</tr>
+<tr>
+<td><strong>a XI-a</strong></td>
+<td>Grafuri (orientate/neorientate, ponderate), arbori (binari, BST), modelul POO</td>
+<td>Backtracking, BFS, DFS, Dijkstra, Prim, parcurgerea arborilor</td>
+<td>Python + C++ POO, compararea paradigmelor (C, Java, JS, C#)</td>
+</tr>
+<tr>
+<td><strong>a XII-a</strong></td>
+<td>Modelul entitate-relație, modele de date ML (seturi de date, atribute, etichete)</td>
+<td>Normalizarea bazelor de date (FN1-FN3), K-means, regresie liniară, KNN</td>
+<td>SQL (DDL/DML/DQL), conectori Python pentru BD, Pandas, Matplotlib, Scikit-learn</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-cs_mi_int-matematica-informatica-intensiv">3.3 CS_MI_INT — Matematică-informatică intensiv</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Clasa</th>
+<th>Adăugiri cheie față de filiera regulată</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>a IX-a</strong></td>
+<td>Liste, stive, cozi; algoritmul lui Euclid, ciurul lui Eratostene, sortare (selecție, bubblesort); subprograme; operații cu fișiere; noțiuni de GUI</td>
+</tr>
+<tr>
+<td><strong>a X-a</strong></td>
+<td>Tupluri adăugate; cifruri Caesar/monoalfabetic/Vigenere; algoritmul Flood Fill; structuri C++; recursivitate aprofundată</td>
+</tr>
+<tr>
+<td><strong>a XI-a</strong></td>
+<td>Liste înlănțuite (simplu, dublu, circular); structura de date heap; algoritmul lui Kruskal; Roy-Floyd/Roy-Warshall; <strong>programare dinamică</strong>; pointeri și alocare dinamică a memoriei în C++</td>
+</tr>
+<tr>
+<td><strong>a XII-a</strong></td>
+<td>Tot ce conține programa regulată a clasei a XII-a + <strong>rețele neuronale</strong> (perceptron, feedforward, backpropagation); NumPy; tranzacții în baze de date (COMMIT/ROLLBACK); vederi (views); controlul accesului (GRANT/REVOKE); noțiuni de recunoaștere a imaginilor</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="34-cs_sn-stiinte-ale-naturii">3.4 CS_SN — Științe ale naturii</h3>
+<p>Clasele a IX-a și a X-a, câte 1 oră/săptămână. Acoperă: șiruri de caractere, liste imbricate, căutare binară, interclasare, greedy (de bază), divide et impera (de bază). Python ca limbaj principal, C++ minimal. Fără POO, fără grafuri, fără baze de date, fără ML.</p>
+<h3 id="35-varianta-militara-mlt">3.5 Varianta militară (MLT)</h3>
+<p>Aproape identică cu CS_MI regulat, cu adăugiri minore: noțiuni de criptografie (cifrul Caesar, substituția monoalfabetică, cifrul Vigenere în clasa a X-a), POO simplificată în clasa a XI-a. Convergentă cu filiera regulată până în clasa a XII-a.</p>
+<hr />
+<h2 id="4-puncte-forte">4. Puncte forte</h2>
+<h3 id="41-fundament-algoritmic-clasic-solid">4.1 Fundament algoritmic clasic solid</h3>
+<p>Filierele CS_MI și CS_MI_INT oferă o pregătire algoritmică cu adevărat riguroasă:</p>
+<ul>
+<li><strong>Algoritmi pe grafuri</strong>: BFS, DFS, Dijkstra, Prim, Kruskal (INT), Roy-Floyd (INT)</li>
+<li><strong>Paradigme de rezolvare a problemelor</strong>: Divide et impera, greedy, backtracking, programare dinamică (INT)</li>
+<li><strong>Structuri de date</strong>: Tablouri, liste, stive, cozi, liste înlănțuite (INT), arbori, heap-uri (INT), grafuri</li>
+<li><strong>Conștientizarea complexității</strong>: Elevii învață să analizeze și să compare eficiența algoritmilor</li>
+</ul>
+<p>Aceasta este comparabilă cu un curs universitar de algoritmi din primul an în multe țări. Tradiția românească a olimpiadelor de informatică se reflectă aici — acest curriculum formează elevi capabili să raționeze despre complexitatea algoritmică.</p>
+<h3 id="42-python-ca-limbaj-principal">4.2 Python ca limbaj principal</h3>
+<p>Python este alegerea potrivită pentru 2026. Este:
+- Limbajul dominant în IA/ML, știința datelor și automatizare
+- Lizibil și ușor de învățat
+- Limbajul în care funcționează Pandas, Scikit-learn, Matplotlib — toate predate în clasa a XII-a</p>
+<p>Abordarea duală Python/C++ are, de asemenea, merite: C++ expune elevii la gestionarea memoriei, pointeri și tipare statice, construind o înțelegere mai profundă.</p>
+<h3 id="43-modulul-de-invatare-automata-in-clasa-a-xii-a">4.3 Modulul de învățare automată în clasa a XII-a</h3>
+<p>Programa clasei a XII-a predă explicit:
+- Conceptele de învățare supervizată vs. nesupervizată
+- Gruparea K-means (clustering)
+- Regresia liniară
+- K-Nearest Neighbors (KNN)
+- Preprocesarea datelor (normalizare, codificare, tratarea datelor lipsă)
+- Pandas, Matplotlib, Scikit-learn în practică
+- Rețele neuronale (perceptron, backpropagation) la filiera intensivă</p>
+<p>Aceasta este o viziune orientată către viitor. Multe țări nu au deloc învățare automată în curriculumul liceal.</p>
+<h3 id="44-iot-si-robotica-in-trunchiul-comun">4.4 IoT și robotică în trunchiul comun</h3>
+<p>TIC (clasa a XI-a) introduce arhitectura IoT (senzori, actuatori, cloud, rețele de comunicații) și noțiuni fundamentale de robotică pentru TOȚI elevii, nu doar pentru specialiștii în informatică. Instrumentele menționate includ Arduino, Tinkercad, VEX VR și mBlock AI. Aceasta oferă elevilor din afara profilului informatică o bază conceptuală în domeniul calculului fizic.</p>
+<h3 id="45-acoperirea-securitatii-cibernetice">4.5 Acoperirea securității cibernetice</h3>
+<p>TIC clasa a X-a oferă educație substanțială în securitate cibernetică pentru toți elevii:
+- Taxonomia amenințărilor (malware, ransomware, phishing, DDoS, inginerie socială)
+- Măsuri defensive (MFA, criptare, setări de confidențialitate)
+- Conștientizarea identității digitale și a amprentei digitale
+- Drepturi de autor și etică digitală</p>
+<h3 id="46-alinierea-la-cadrul-european">4.6 Alinierea la cadrul european</h3>
+<p>Programele școlare fac referire explicită și se aliniază la:
+- <strong>DigComp 2.3</strong> (Cadrul european al competențelor digitale)
+- <strong>Cadrul de competențe IA UNESCO pentru elevi</strong>
+- <strong>EQF</strong> (Cadrul european al calificărilor)</p>
+<p>Aceasta asigură un anumit grad de portabilitate și comparabilitate internațională.</p>
+<h3 id="47-ore-de-laborator-obligatorii">4.7 Ore de laborator obligatorii</h3>
+<p>Toate filierele impun activități practice în laboratorul de informatică. Filiera intensivă alocă 2-3 ore de laborator pe săptămână pe lângă teorie. Acest lucru este esențial — informatica nu se poate învăța doar din manuale.</p>
+<h3 id="48-pedagogie-bazata-pe-proiecte">4.8 Pedagogie bazată pe proiecte</h3>
+<p>Secțiunile metodologice subliniază:
+- Învățare activă (dezbateri, studii de caz, proiecte, portofolii)
+- Învățare colaborativă (lucru în echipă, mentorat între colegi)
+- Învățare autentică (contexte reale de rezolvare a problemelor)
+- Gândirea computațională ca abilitate transversală</p>
+<hr />
+<h2 id="5-puncte-slabe">5. Puncte slabe</h2>
+<h3 id="51-iaml-apare-prea-tarziu">5.1 IA/ML apare prea târziu</h3>
+<p>Învățarea automată apare abia în clasa a XII-a — ultimul an de liceu. Până când elevii întâlnesc K-means sau regresia liniară, au petrecut deja 3 ani (sau 4 la filiera intensivă) fără nicio înțelegere conceptuală a modului în care funcționează sistemele de IA. În 2026, elevii folosesc zilnic instrumente de IA (ChatGPT, Copilot, generatoare de imagini) fără a înțelege ce fac acestea.</p>
+<p><strong>Impact:</strong> Elevii își formează concepții greșite despre capacitățile și limitările IA. Nu pot evalua critic rezultatele generate de IA. Pierd 3 ani de potențială integrare între gândirea algoritmică și conceptele de IA.</p>
+<h3 id="52-nicio-alfabetizare-in-domeniul-llm-si-nicio-inginerie-a-prompturilor">5.2 Nicio alfabetizare în domeniul LLM și nicio inginerie a prompturilor</h3>
+<p>Programele școlare menționează „codul generat de IA" și „procesarea imaginilor asistată de IA" ca instrumente de utilizat, dar nu predau niciodată:
+- Cum funcționează modelele lingvistice mari (tokenizare, mecanism de atenție, distribuții de probabilitate)
+- Ce sunt halucinațiile IA și de ce apar
+- Tehnici de inginerie a prompturilor
+- Cum se verifică, critică și îmbunătățește codul generat de IA
+- Când se folosește asistența IA și când nu
+- Cum se scriu instrucțiuni eficiente pentru sistemele de IA</p>
+<p>Aceasta este cea mai critică omisiune. În 2026, capacitatea de a colabora eficient cu sistemele de IA este, fără îndoială, mai importantă decât memorarea ciurului lui Eratostene.</p>
+<h3 id="53-zero-practici-de-inginerie-software">5.3 Zero practici de inginerie software</h3>
+<p>În toate cele 13 documente, <strong>nu există nicio mențiune</strong> despre:
+- <strong>Controlul versiunilor</strong> (git, GitHub, ramificări, fuzionări, pull request-uri)
+- <strong>Testare</strong> (teste unitare, teste de integrare, dezvoltare ghidată de teste)
+- <strong>Revizuirea codului</strong> (revizuire între colegi, standarde de calitate a codului)
+- <strong>CI/CD</strong> (integrare continuă, publicare automată)
+- <strong>Metodologie de depanare</strong> (dincolo de „testează și corectează" la programarea vizuală)
+- <strong>Standarde de documentare</strong> (docstring-uri, fișiere README, documentație de API)</p>
+<p>Elevii învață să scrie algoritmi, dar nu să construiască software. Diferența dintre „pot implementa algoritmul lui Dijkstra" și „pot contribui la un proiect software real" rămâne enormă.</p>
+<h3 id="54-nicio-alfabetizare-in-domeniul-api-urilor">5.4 Nicio alfabetizare în domeniul API-urilor</h3>
+<p>Programele școlare predau baze de date și SQL, dar nu menționează niciodată:
+- API-uri REST sau metode HTTP (GET, POST, PUT, DELETE)
+- JSON ca format de schimb de date
+- Autentificarea la API-uri (chei API, noțiuni de bază OAuth)
+- Cum se consumă servicii externe programatic
+- Cum comunică sistemele software moderne între ele</p>
+<p>Într-o lume în care practic fiecare aplicație se bazează pe API-uri, aceasta este o lacună semnificativă.</p>
+<h3 id="55-dezvoltarea-web-inghetata-in-trecut">5.5 Dezvoltarea web, înghețată în trecut</h3>
+<p>Programa TIC pentru clasa a X-a predă HTML, CSS și JavaScript simplu pentru „crearea de pagini web". Nu se menționează:
+- Framework-uri frontend sau instrumente moderne de dezvoltare
+- Principii de design responsiv (dincolo de mențiuni elementare)
+- Dezvoltare backend
+- Arhitectura aplicațiilor web (modelul client-server dincolo de rețelistică)
+- Manageri de pachete sau instrumente de build</p>
+<p>Conținutul de dezvoltare web ar fi fost adecvat în 2010. În 2026, îi învață pe elevi să construiască artefacte care seamănă foarte puțin cu aplicațiile web reale.</p>
+<h3 id="56-trunchiul-comun-tic-imposibil-de-acoperit-la-o-ora-pe-saptamana">5.6 Trunchiul comun TIC: imposibil de acoperit la o oră pe săptămână</h3>
+<p>Trunchiul comun TIC încearcă să acopere în 36 de ore pe an:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Clasa a X-a (36 ore)</th>
+<th>Clasa a XI-a (36 ore)</th>
+<th>Clasa a XII-a (36 ore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Securitate cibernetică</td>
+<td>Procesare audio</td>
+<td>Semnătura digitală</td>
+</tr>
+<tr>
+<td>Navigare web</td>
+<td>Procesare video</td>
+<td>E-guvernare</td>
+</tr>
+<tr>
+<td>HTML/CSS/JS</td>
+<td>Baze de date (SGBD complet)</td>
+<td>Programare vizuală (C#!)</td>
+</tr>
+<tr>
+<td>Foi de calcul (avansat)</td>
+<td>Arhitectura IoT</td>
+<td>Proiectare GUI</td>
+</tr>
+<tr>
+<td>Imagini digitale (2D + 3D)</td>
+<td>Robotică</td>
+<td>Rețelistică (TCP/IP, configurare)</td>
+</tr>
+<tr>
+<td>Întreținerea sistemului</td>
+<td>Modelarea informatică</td>
+<td>Diagnosticarea rețelelor</td>
+</tr>
+</tbody>
+</table></div>
+<p>Acesta este un curs de tip panoramic care predă totul și nu stăpânește nimic. Un elev nu poate învăța în mod semnificativ C# Windows Forms, rețelistică TCP/IP ȘI concepte de semnătură digitală în 36 de ore — cu atât mai puțin toate trei alături de programare vizuală, proiectare GUI și portaluri de e-guvernare.</p>
+<h3 id="57-profilul-stiinte-ale-naturii-aproape-inexistent">5.7 Profilul științe ale naturii: aproape inexistent</h3>
+<p>Elevii de la profilul științe ale naturii — viitori biologi, chimiști, fizicieni și medici — primesc aproximativ 72 de ore de educație în informatică pe întreaga durată a liceului (clasele a IX-a și a X-a, câte 1 oră/săptămână). Învață operații de bază cu șiruri de caractere, căutare binară și algoritmi greedy.</p>
+<p>Nu întâlnesc niciodată:
+- Baze de date sau SQL (esențiale pentru gestionarea datelor științifice)
+- Vizualizarea datelor (esențială pentru cercetare)
+- Calcul statistic (esențial pentru știința experimentală)
+- Automatizare și scripting (esențiale pentru activitatea de laborator)
+- Concepte de IA/ML (din ce în ce mai esențiale în toate științele)</p>
+<p>Aceasta este o deficiență structurală. În 2026, un biolog care nu poate scrie un script Python pentru a procesa date experimentale sau un fizician care nu poate folosi ML pentru analiza simulărilor este în dezavantaj major.</p>
+<h3 id="58-poo-fara-arhitectura">5.8 POO fără arhitectură</h3>
+<p>Programarea orientată pe obiecte este predată (clasa a XI-a CS_MI, cu moștenire, încapsulare, constructori), dar:
+- Niciun șablon de proiectare (nici măcar cele de bază precum Observer, Factory, Strategy)
+- Niciun concept de arhitectură (separarea responsabilităților, MVC, arhitectură pe straturi)
+- Nicio discuție despre când POO este adecvată față de alte paradigme (funcțională, procedurală)
+- „Compararea paradigmelor" din clasa a XI-a enumeră C, C++, Java, JavaScript, C# și J#, dar descrie doar caracteristicile lor sintactice, nu filozofiile de proiectare</p>
+<h3 id="59-proiectarea-bazelor-de-date-fara-context-real">5.9 Proiectarea bazelor de date fără context real</h3>
+<p>Conținutul de modelare entitate-relație și SQL din clasa a XII-a este solid ca teorie, dar:
+- Nicio expunere la baze de date NoSQL (MongoDB, Redis) — din ce în ce mai frecvente în practică
+- Nicio discuție despre depozite de date (data warehousing) sau modele analitice
+- Nicio conexiune între competențele de baze de date și dezvoltarea web/API
+- Tranzacțiile în baze de date apar doar la filiera intensivă
+- Fără indexare, optimizarea interogărilor sau considerații de performanță</p>
+<h3 id="510-evaluarea-ramane-centrata-pe-produs">5.10 Evaluarea rămâne centrată pe produs</h3>
+<p>Deși secțiunile metodologice menționează evaluarea formativă, structura competențelor urmează rigid taxonomia lui Bloom (identificare → explicare → utilizare → analiză → evaluare → creare). Exemplele de evaluare se concentrează pe produse finale (capturi de ecran, fișiere salvate, elemente de portofoliu) mai degrabă decât pe competențe de proces precum depanarea, colaborarea sau îmbunătățirea iterativă.</p>
+<hr />
+<h2 id="6-lacune-critice-pentru-era-inteligentei-artificiale">6. Lacune critice pentru era inteligenței artificiale</h2>
+<p>Acestea sunt teme nu doar insuficient predate, ci <strong>complet absente</strong> din curriculum:</p>
+<h3 id="61-alfabetizare-in-domeniul-ia-generative">6.1 Alfabetizare în domeniul IA generative</h3>
+<p>Elevii din 2026 interacționează zilnic cu IA generativă. Curriculumul ar trebui să predea:
+- Cum funcționează LLM-urile la nivel conceptual (date de antrenare, token-uri, probabilitate, ferestre de context)
+- Ce sunt halucinațiile IA și de ce apar
+- Cum funcționează conceptual generarea de imagini/audio/video
+- Diferența dintre conținutul generat de IA și cel creat de oameni
+- Cum se detectează conținutul generat de IA și deepfake-urile (menționate în TIC clasa a XI-a doar ca risc, niciodată ca abilitate)
+- Limitările și modurile de eroare ale sistemelor actuale de IA</p>
+<h3 id="62-competente-de-colaborare-om-ia">6.2 Competențe de colaborare om-IA</h3>
+<p>Cea mai importantă meta-competență pentru era IA:
+- Ingineria prompturilor: structurarea cererilor pentru obținerea de rezultate utile
+- Rafinare iterativă: îmbunătățirea rezultatelor IA prin bucle de feedback
+- Verificare: verificarea corectitudinii codului/textului/datelor generate de IA
+- Descompunerea sarcinilor: cunoașterea a ceea ce se delegă către IA și a ceea ce se face manual
+- Depanare și revizuire de cod asistată de IA
+- Utilizarea IA ca accelerator al învățării (nu ca scurtătură)</p>
+<h3 id="63-etica-ia-si-societatea">6.3 Etica IA și societatea</h3>
+<p>Curriculumul menționează „utilizarea etică, responsabilă și avizată a IA" ca slogan, dar nu predă niciodată în mod substanțial:
+- Prejudecata algoritmică (cum datele de antrenare creează rezultate discriminatorii)
+- Echitate în ML (paritate demografică, cote egalizate)
+- Explicabilitate (de ce un model a făcut o anumită predicție)
+- Implicațiile IA asupra confidențialității (recunoaștere facială, supraveghere, colectare de date)
+- Costul de mediu al IA (putere de calcul, energie, apă)
+- Întrebări legate de proprietatea intelectuală (cui aparține creația generată de IA?)
+- Impactul asupra ocupării forței de muncă și a naturii muncii
+- Sisteme autonome și responsabilitate (mașini autonome, IA medicală)</p>
+<h3 id="64-alfabetizarea-in-lucrul-cu-date-si-gandirea-statistica">6.4 Alfabetizarea în lucrul cu date și gândirea statistică</h3>
+<p>Dincolo de mecanismele Pandas/Matplotlib din clasa a XII-a:
+- Înțelegerea distribuțiilor, corelație vs. cauzalitate
+- Eroarea de eșantionare și semnificația statistică
+- Cadre de evaluare a calității datelor
+- Etica colectării datelor și consimțământul
+- Interpretarea critică a vizualizărilor (grafice înșelătoare, erori de selecție)
+- Concepte de testare A/B
+- Teoria probabilităților de bază aplicată la decizii reale</p>
+<h3 id="65-open-source-si-dezvoltare-colaborativa">6.5 Open source și dezvoltare colaborativă</h3>
+<p>Curriculumul nu predă niciun instrument sau flux de lucru colaborativ:
+- Noțiuni de bază git (clone, branch, commit, merge, pull request)
+- GitHub/GitLab ca platforme de colaborare
+- Practici de contribuție la proiecte open source
+- Procese de revizuire a codului
+- Noțiuni de bază de urmărire a problemelor (issue tracking) și management de proiect
+- Citirea și înțelegerea codului altora (o competență profesională critică)</p>
+<h3 id="66-cloud-computing-si-publicarea-aplicatiilor">6.6 Cloud computing și publicarea aplicațiilor</h3>
+<p>Elevii scriu programe care rulează local. Nu învață niciodată:
+- Ce este cloud computing-ul (IaaS, PaaS, SaaS la nivel conceptual)
+- Cum se publică o aplicație
+- Concepte de containerizare (Docker la nivel conceptual)
+- Pipeline-uri CI/CD
+- Noțiuni de bază de monitorizare și jurnalizare
+- Implicațiile de cost ale resurselor cloud</p>
+<h3 id="67-securitate-dincolo-de-constientizare">6.7 Securitate dincolo de conștientizare</h3>
+<p>Conținutul de securitate cibernetică din TIC predă conștientizarea amenințărilor, dar nu:
+- Practici de programare securizată (validarea intrărilor, prevenirea injecțiilor SQL, XSS)
+- Implementarea autentificării și autorizării
+- Principii criptografice dincolo de cifrul Caesar
+- Exerciții practice de securitate (provocări CTF, analiză de vulnerabilități)
+- Noțiuni de bază de răspuns la incidente
+- Mentalitatea de securitate (a gândi ca un atacator pentru a construi apărări mai bune)</p>
+<h3 id="68-gandirea-computationala-cu-date-reale">6.8 Gândirea computațională cu date reale</h3>
+<p>Algoritmii sunt predați cu date sintetice. Lipsesc:
+- Lucrul cu seturi de date reale, dezordonate
+- Curățarea datelor ca abilitate principală (nu doar o etapă de preprocesare)
+- Colectarea și extragerea etică a datelor
+- Conectarea analizei la luarea deciziilor
+- Comunicarea rezultatelor către audiențe non-tehnice</p>
+<h3 id="69-concepte-de-programare-functionala">6.9 Concepte de programare funcțională</h3>
+<p>Compararea paradigmelor din clasa a XI-a menționează programarea „declarativă" dar nu predă niciodată:
+- Funcții pure și imutabilitate
+- Tiparele map/filter/reduce (deși Python le suportă nativ)
+- Funcții lambda și closure-uri (Python le are)
+- De ce conceptele funcționale contează pentru calculul paralel și pipeline-urile de IA</p>
+<h3 id="610-gandirea-de-produs-digital">6.10 Gândirea de produs digital</h3>
+<p>TIC clasa a XII-a menționează „etapele dezvoltării produselor" (strategie, design, implementare, tranziție, producție), dar aceasta este o enumerare teoretică, nu o abilitate practicată. Lipsesc:
+- Cercetarea utilizatorilor și scenariile de utilizare (user stories)
+- Noțiuni de bază de dezvoltare agilă/iterativă
+- Conceptul de MVP (Produs Minim Viabil)
+- Bucle de feedback și iterare
+- Măsurarea succesului (analitice de bază, metrici de utilizare)</p>
+<hr />
+<h2 id="7-comparatie-internationala">7. Comparație internațională</h2>
+<h3 id="71-regatul-unit-computing-national-curriculum-a-level">7.1 Regatul Unit — Computing National Curriculum + A-Level</h3>
+<p>A-Level Computer Science din Regatul Unit acoperă un teren algoritmic similar (parcurgerea grafurilor, sortare, POO), dar solicită și:
+- Înțelegerea internetului și a tehnologiilor web (HTTP, client-server, REST)
+- Testare sistematică (white-box, black-box, teste unitare)
+- Proiect practic cu proces documentat de inginerie software
+- Considerații legale și etice ca componentă evaluată</p>
+<p>Regatul Unit a introdus, de asemenea, alfabetizarea în IA în curriculumul de Competențe Digitale pentru vârstele 11-14 ani.</p>
+<h3 id="72-finlanda-scoala-comprehensiva-liceu">7.2 Finlanda — Școala comprehensivă + Liceu</h3>
+<p>Finlanda integrează gândirea computațională în toate disciplinele încă din ciclul primar. Programa lor de informatică pentru liceu include:
+- Analiza și vizualizarea datelor ca teme centrale
+- Concepte de IA introduse de la vârsta de 15 ani
+- Accent pe aplicații în lumea reală (nu doar exerciții algoritmice)
+- Proiecte interdisciplinare care conectează informatica cu alte materii
+- Etica digitală ca modul de sine stătător</p>
+<h3 id="73-franta-nsi-numerique-et-sciences-informatiques">7.3 Franța — NSI (Numérique et Sciences Informatiques)</h3>
+<p>Filiera de specialitate NSI din Franța, disponibilă în clasele première și terminale, acoperă un teren algoritmic comparabil cu filiera intensivă românească:
+- Reprezentări ale grafurilor, parcurgeri de tip DFS/BFS, arbori și arbori binari de căutare
+- Divide et impera, baze de date relaționale și SQL
+- Clase, încapsulare, moștenire
+- Depanare, aserțiuni, documentare și construcția de seturi de teste
+- Proiecte care pot include module de IA și învățare automată</p>
+<p>NSI este un contraexemplu important: demonstrează că filiera intensivă românească nu este „superioară" filierelor de specialitate europene, ci comparabilă — cu România mai puternică pe algoritmii puri și Franța mai puternică pe practicile de inginerie software (testare, documentare, aserțiuni).</p>
+<h3 id="74-suedia-disciplina-dedicata-de-ia">7.4 Suedia — Disciplina dedicată de IA</h3>
+<p>Din toamna anului 2024, liceele din Suedia pot oferi o disciplină dedicată de inteligență artificială, cu accent pe dezvoltarea IA din perspectivă societală și pe utilizarea IA pentru rezolvarea de probleme. Aceasta arată că unele țări europene sunt deja în avans față de România în ceea ce privește integrarea formală a IA în curriculum.</p>
+<h3 id="75-singapore-programa-de-informatica">7.5 Singapore — Programa de informatică</h3>
+<p>Programa revizuită de A-Level Computing din Singapore (2025+) include:
+- IA și învățare automată ca temă centrală (nu doar în clasa a XII-a)
+- Securitate cibernetică ca modul practic (nu doar conștientizare)
+- Proiect de analiză a datelor ca cerință obligatorie
+- Utilizarea API-urilor și dezvoltarea de aplicații web
+- Practici colaborative de dezvoltare software</p>
+<h3 id="76-tabel-comparativ-sintetic">7.6 Tabel comparativ sintetic</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Temă</th>
+<th>România (2026)</th>
+<th>Regatul Unit (A-Level)</th>
+<th>Franța (NSI)</th>
+<th>Finlanda</th>
+<th>Singapore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algoritmi clasici</td>
+<td>Puternic</td>
+<td>Puternic</td>
+<td>Puternic</td>
+<td>Moderat</td>
+<td>Puternic</td>
+</tr>
+<tr>
+<td>ML/IA</td>
+<td>Doar clasa a XII-a</td>
+<td>Introductiv</td>
+<td>Proiecte opționale</td>
+<td>Integrat</td>
+<td>Temă centrală</td>
+</tr>
+<tr>
+<td>Inginerie software</td>
+<td>Absent</td>
+<td>Moderat</td>
+<td>Moderat (testare, aserțiuni, doc.)</td>
+<td>Moderat</td>
+<td>Obligatoriu</td>
+</tr>
+<tr>
+<td>Etica IA</td>
+<td>Mențiune superficială</td>
+<td>Evaluată</td>
+<td>Integrată</td>
+<td>De sine stătător</td>
+<td>Integrat</td>
+</tr>
+<tr>
+<td>Controlul versiunilor</td>
+<td>Absent</td>
+<td>Așteptat</td>
+<td>Așteptat</td>
+<td>Așteptat</td>
+<td>Obligatoriu</td>
+</tr>
+<tr>
+<td>API/aplicații web</td>
+<td>Absent</td>
+<td>De bază</td>
+<td>Menționat</td>
+<td>Moderat</td>
+<td>Obligatoriu</td>
+</tr>
+<tr>
+<td>Alfabetizare date</td>
+<td>Târzie (XII)</td>
+<td>Moderat</td>
+<td>Moderat</td>
+<td>Puternic</td>
+<td>Puternic</td>
+</tr>
+<tr>
+<td>Dezvoltare colaborativă</td>
+<td>Absent</td>
+<td>Proiect practic</td>
+<td>Proiect practic</td>
+<td>Bazat pe proiecte</td>
+<td>Obligatoriu</td>
+</tr>
+<tr>
+<td>Alfabetizare LLM/IA generativă</td>
+<td>Absent</td>
+<td>Emergent</td>
+<td>Emergent</td>
+<td>Emergent</td>
+<td>Emergent</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Notă metodologică:</strong> Comparațiile internaționale trebuie interpretate cu prudență. Eurydice subliniază că informatica în Europa este extrem de eterogenă — 37 de țări, 39 de sisteme educaționale, cu variații mari în denumirea disciplinelor, focalizare și structura curriculară. Tabelul de mai sus compară filiere de specialitate (nu programe obligatorii generale), ceea ce oferă cea mai echitabilă bază de comparație.</p>
+<p>Filiera intensivă din România este <strong>mai puternică în algoritmi puri</strong> decât multe programe obligatorii europene și <strong>comparabilă cu filierele de specialitate puternice</strong> precum NSI din Franța. Dar este <strong>mai slabă în competențe aplicate, alfabetizare IA și inginerie software</strong> — domeniile care contează cel mai mult pentru pregătirea profesională.</p>
+<hr />
+<h2 id="8-recomandari">8. Recomandări</h2>
+<h3 id="nivel-1-imediat-pot-fi-integrate-fara-modificari-structurale">Nivel 1: Imediat (pot fi integrate fără modificări structurale)</h3>
+<p><strong>R1. Introducerea conceptelor de alfabetizare IA începând cu clasa a IX-a, la toate filierele.</strong>
+Elevii ar trebui să înțeleagă, din prima zi, ce este IA, cum învață, ce poate și ce nu poate face și cum se folosește în mod responsabil. Aceasta nu necesită predarea algoritmilor de ML — necesită alfabetizare conceptuală. Trunchiul comun TIC este vehiculul natural pentru toți elevii; filierele de informatică ar trebui să o integreze alături de gândirea algoritmică.</p>
+<p><strong>R2. Adăugarea unei componente practice „Lucrul cu instrumente IA" la fiecare clasă de informatică.</strong>
+Fiecare an ar trebui să includă exerciții structurate în:
+- Utilizarea asistenților IA pentru generarea și revizuirea codului
+- Evaluarea și corectarea codului generat de IA
+- Ingineria prompturilor pentru diferite sarcini
+- Documentarea a ceea ce a fost utilizat cu IA și cum a fost verificat</p>
+<p><strong>R3. Introducerea git în clasa a IX-a/a X-a pentru toate filierele de informatică.</strong>
+Controlul versiunilor nu este un subiect avansat. Este fundamental. Elevii ar trebui să folosească git din primul curs de programare, chiar dacă doar <code>init</code>, <code>add</code>, <code>commit</code> și <code>log</code>. Până în clasa a XI-a, ar trebui să lucreze cu ramificări (branches) și să colaboreze prin pull request-uri.</p>
+<p><strong>R4. Adăugarea testării de bază în programa de programare.</strong>
+Când elevii scriu o funcție, ar trebui să scrie teste pentru ea. Instrucțiunea <code>assert</code> din Python și modulele <code>unittest</code> sau <code>pytest</code> sunt suficient de simple pentru clasa a X-a. Testarea consolidează gândirea algoritmică mai eficient decât scrierea de noi algoritmi.</p>
+<h3 id="nivel-2-pe-termen-scurt-urmatorul-ciclu-de-revizuire-a-curriculumului">Nivel 2: Pe termen scurt (următorul ciclu de revizuire a curriculumului)</h3>
+<p><strong>R5. Înlocuirea sau completarea conținutului de dezvoltare web cu alfabetizare API.</strong>
+În loc de pagini HTML statice, elevii ar trebui să învețe să:
+- Facă cereri HTTP către API-uri publice (vreme, data.gov etc.)
+- Parseze răspunsuri JSON
+- Construiască endpoint-uri REST simple (Flask/FastAPI în Python)
+- Înțeleagă arhitectura client-server prin practică</p>
+<p><strong>R6. Extinderea și aprofundarea modulului de informatică pentru profilul științe ale naturii.</strong>
+Cele două ore existente (clasele a IX-a și a X-a) ar trebui completate cu cel puțin un an suplimentar (clasa a XI-a), iar conținutul ar trebui să includă:
+- Scripturi Python pentru procesarea datelor și automatizare
+- Vizualizarea datelor cu Matplotlib
+- Analiză statistică de bază cu Pandas
+- Introducere în conceptele de ML (învățare supervizată, ce este un model)
+- Aplicații specifice domeniului (bioinformatică, chimie computațională, simulări de fizică)</p>
+<p><strong>R7. Adăugarea unui modul de Etică a IA și societate la TIC.</strong>
+Alocarea a cel puțin 4-6 ore pe an pentru etica IA substanțială:
+- Prejudecata algoritmică (cu exemple reale și studii de caz)
+- Confidențialitate și supraveghere
+- Impactul asupra mediului al tehnologiei
+- Proprietatea intelectuală în era IA generative
+- Sisteme autonome și responsabilitate</p>
+<p><strong>R8. Predarea programării securizate, nu doar a conștientizării securității.</strong>
+Elevii de la filierele de informatică ar trebui să învețe:
+- Validarea și sanitizarea datelor de intrare
+- Prevenirea injecțiilor SQL și XSS (practic, nu teoretic)
+- Tipare de autentificare
+- Cel puțin un exercițiu practic de securitate (de tip CTF)</p>
+<h3 id="nivel-3-pe-termen-mediu-ajustari-structurale">Nivel 3: Pe termen mediu (ajustări structurale)</h3>
+<p><strong>R9. Restructurarea TIC pentru a prioritiza profunzimea în detrimentul lărgimii.</strong>
+Opțiuni:
+- <strong>Opțiunea A:</strong> Reducerea TIC la 3-4 module concentrate pe an în loc de 6-8 superficiale
+- <strong>Opțiunea B:</strong> Creșterea TIC la 2 ore pe săptămână (ideal, dar dificil politic)
+- <strong>Opțiunea C:</strong> Transformarea unor teme TIC în opționale/elective în cadrul programei</p>
+<p>Un elev care înțelege profund securitatea cibernetică și poate construi o aplicație web reală are competențe mai valoroase decât unul care a văzut introduceri superficiale în baze de date, IoT, robotică, rețelistică, multimedia și programare vizuală.</p>
+<p><strong>R10. Introducerea alfabetizării în lucrul cu date ca competență transversală.</strong>
+Colaborarea cu programele de matematică, științe și studii sociale pentru a crea un fir comun de „alfabetizare în lucrul cu date" care să includă:
+- Citirea și evaluarea critică a vizualizărilor de date
+- Înțelegerea eșantionării, prejudecăților și semnificației statistice
+- Luarea deciziilor informate pe baza datelor
+- Colectarea etică a datelor și utilizarea lor</p>
+<p><strong>R11. Mutarea conceptelor de ML/IA mai devreme în filiera de informatică.</strong>
+Propunere:
+- <strong>Clasa a IX-a (INT) / clasa a X-a (MI):</strong> Concepte de IA — ce este ML, supervizat vs. nesupervizat, date de antrenare, prejudecăți, exemplu simplu de clasificare
+- <strong>Clasa a X-a (INT) / clasa a XI-a (MI):</strong> Procesarea datelor cu Pandas/Matplotlib, analiză exploratorie a datelor, regresie simplă
+- <strong>Clasa a XI-a (INT) / clasa a XII-a (MI):</strong> Conținutul actual al clasei a XII-a (K-means, KNN, rețele neuronale) plus publicare și evaluare
+- <strong>Clasa a XII-a (INT):</strong> Teme avansate — noțiuni de bază NLP, viziune computerizată, concepte de învățare prin recompensă, proiect de absolvire IA</p>
+<h3 id="nivel-4-pe-termen-lung-filiereoptionale-noi">Nivel 4: Pe termen lung (filiere/opționale noi)</h3>
+<p><strong>R12. Crearea unei filiere opționale „IA și Știința Datelor".</strong>
+Pentru elevii interesați de cariere în IA/date, oferirea unui opțional dedicat de 2-4 ore/săptămână care să acopere:
+- Fundamente statistice
+- Pipeline-ul ML (colectarea datelor, curățare, ingineria atributelor, antrenare, evaluare, publicare)
+- Fundamente de deep learning
+- Aplicații NLP și viziune computerizată
+- Dezvoltare etică a IA
+- Dezvoltare de produse IA (de la concept la publicare)</p>
+<p><strong>R13. Introducerea proiectelor colaborative de absolvire (capstone).</strong>
+Clasa a XII-a la toate filierele de informatică ar trebui să includă un proiect pe mai multe săptămâni care să necesite:
+- Colaborare în echipă prin git
+- Analiza cerințelor și planificare
+- Dezvoltare iterativă cu testare
+- Documentare și prezentare
+- Publicare reală (chiar și pe un server local)</p>
+<p>Această singură modificare ar aborda simultan multiple lacune (controlul versiunilor, testare, colaborare, publicare, documentare).</p>
+<p><strong>R14. Stabilirea unui mecanism de revizuire continuă a curriculumului pentru tehnologiile emergente.</strong>
+Capacitățile IA evoluează mai rapid decât ciclurile curriculare. Crearea unui mecanism pentru:
+- Revizuire anuală a conținutului de IA/tehnologie pentru actualitate
+- Formare profesională continuă a cadrelor didactice în noi tehnologii
+- Contribuții consultative din partea industriei privind competențele relevante pentru piața muncii
+- Feedback din partea elevilor privind relevanța și motivația</p>
+<hr />
+<h2 id="9-anexa-inventarul-complet-al-temelor-pe-documente">9. Anexă: Inventarul complet al temelor pe documente</h2>
+<h3 id="a-tic-trunchi-comun">A. TIC — Trunchi comun</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Teme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anexa 41 (X)</strong></td>
+<td>Identitate digitală, amprentă digitală, riscuri cibernetice (malware, phishing, DDoS, inginerie socială), măsuri preventive de securitate, motoare de căutare și operatori, navigare privată, gestionarea cookie-urilor, structura HTML/etichete/atribute, selectori/proprietăți CSS, interactivitate JavaScript, cod generat de IA, optimizarea paginilor, referințe în foi de calcul (relative/absolute/mixte), funcții avansate, formatare condiționată, tabele pivot, protecția datelor, caracteristicile imaginilor 2D/3D, reprezentare raster/vectorială, formate de imagine (BMP, JPEG, PNG, GIF, STL, OBJ), operații de procesare a imaginilor, procesare de imagini asistată de IA, asamblarea și compatibilitatea hardware, actualizări SO, gestionarea driverelor, programe utilitare (antivirus, backup, defragmentare/TRIM), depanare de bază</td>
+</tr>
+<tr>
+<td><strong>Anexa 42 (XI)</strong></td>
+<td>Modelarea informatică (economică, de mediu, sisteme expert, recreere), riscuri și siguranță pe platforme, formate audio/codecuri/eșantionare/rată de biți, crearea de podcasturi, procesare audio (tăiere, mixare, eliminarea zgomotului), generare audio IA (AIVA, Musicful), formate video/codecuri/rezoluție/fps, procesare video (tăiere, subtitrare, coloană sonoră), generare video IA (VEED, Sora2AI), conștientizarea deepfake, modele de baze de date, instrumente SGBD, structura tabelelor/chei primare, interogări, relații/chei externe, formulare, rapoarte, asistență IA pentru baze de date, arhitectura IoT (senzori, actuatori, cloud, comunicații), tipuri de dispozitive inteligente (locuință, portabile, sănătate, agricultură, industrie), 5G/LoRaWAN, beneficii/riscuri IoT, componente hardware robot (motoare, controlere, senzori), tipuri de roboți (industriali, educaționali, transport), modelare virtuală a roboților, comportament robotic bazat pe IA</td>
+</tr>
+<tr>
+<td><strong>Anexa 43 (XII)</strong></td>
+<td>Semnătura digitală, digitalizarea serviciilor publice (plata taxelor, portaluri cetățenești), identificare automată (coduri de bare, RFID, biometrie, recunoașterea plăcuțelor de înmatriculare), impactul de mediu al tehnologiei, certificare profesională digitală, CV digital, platforme de carieră, portofoliu online, ciclul de viață al dezvoltării produselor digitale (strategie, design, implementare, tranziție, producție), documentația produselor, concepte de programare vizuală, dezvoltare GUI (C# Windows Forms, MIT App Inventor), programare orientată pe evenimente, ergonomie/accesibilitate (aliniere, contrast, fonturi, WCAG), controale de formular (butoane, etichete, câmpuri text, liste), gestionarea proprietăților și evenimentelor, dezvoltare de aplicații asistată de IA, tipuri de rețele (LAN, WAN, PAN, VPN), topologii (stea, plasă), dispozitive (router, switch, modem, punct de acces), medii de transmisie (UTP, STP, fibră optică, wireless), protocoale (TCP/IP, UDP, HTTPS), adresare IP (IPv4, IPv6), servicii de rețea (DHCP, DNS), subrețele/gateway-uri, configurarea routerelor Wi-Fi, securitate firewall, instrumente de diagnosticare (ping, traceroute, ipconfig, netstat)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="b-cs_mi-regulat-si-militar">B. CS_MI — Regulat și militar</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Teme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anexa 44 (X MI)</strong></td>
+<td>Modelul conceptual al mulțimii (reuniune, intersecție, diferență, egalitate, incluziune), modelul șirului de caractere (acces, concatenare, comparare lexicografică, căutare), modelul dicționar (cheie-valoare, acces), modele mixte (liste de liste, liste de șiruri, dicționare de liste), căutare binară, interclasarea listelor sortate, divide et impera, metoda greedy, clasa Python set (add, remove, union, intersection), clasa Python str (split, lower, upper, strip, replace, count, isalpha, isdigit), clasa Python dict (update, pop, popitem, clear, copy, fromkeys, get, setdefault, keys, values, items), subprograme recursive (directă/indirectă, caz de bază, apel recursiv)</td>
+</tr>
+<tr>
+<td><strong>Anexa 45 (X MLT)</strong></td>
+<td>Tot ce conține Anexa 44 PLUS: modelul tuplu (imutabil, date fixe), criptare simplă (cifrul Caesar, substituția monoalfabetică, Vigenere), verificarea integrității datelor, codificare ASCII/Unicode, clasa Python tuple</td>
+</tr>
+<tr>
+<td><strong>Anexa 46 (XI MI)</strong></td>
+<td>Modelul graf (neorientat/orientat, noduri, muchii, adiacență, grad, lanțuri, drumuri, cicluri, circuite), reprezentări ale grafurilor (matrice de adiacență, liste de adiacență, liste de muchii), tipuri de grafuri (complet, conex, tare conex, ponderat, hamiltonian, eulerian), subgraf/graf parțial, modelul arbore (rădăcină, niveluri, frunze, descendenți, ascendenți), reprezentări ale arborilor (referințe ascendente/descendente), arbori binari și BST, modelul POO (clasă, obiect, moștenire), backtracking, BFS, DFS, verificarea conexității, componente conexe, matrice de drumuri, Dijkstra, detectarea ciclului eulerian, algoritmul lui Prim, parcurgerea arborilor (preordine, inordine, postordine), căutare/inserare BST, definirea claselor (acces public/privat, constructor, destructor), clase derivate, compararea paradigmelor (procedurală, POO, declarativă; C, C++, Java, JS, C#, J#)</td>
+</tr>
+<tr>
+<td><strong>Anexa 47 (XI MLT)</strong></td>
+<td>La fel ca Anexa 46, cu POO simplificată (clase de bază fără derivare extensivă)</td>
+</tr>
+<tr>
+<td><strong>Anexa 48 (XII MI/MLT)</strong></td>
+<td>Modelul ER (entități, atribute, identificatori, relații, cardinalitate, rezolvarea M:M, istoricul datelor), modelul fizic (tabele, câmpuri, chei primare/externe, constrângeri, reguli de integritate), maparea conceptual-fizic, organizarea datelor ML (date, atribute, etichete, model, antrenare, testare, predicție), caracteristicile seturilor de date, transformarea datelor (normalizare, scalare, augmentare, codificare, tratarea datelor lipsă), forme normale (FN1, FN2, FN3), gruparea K-means, regresia liniară, KNN, SQL DQL (SELECT, proiecție, ordonare, funcții, agregate, JOIN-uri), SQL DML (INSERT, UPDATE, DELETE), SQL DDL (CREATE, ALTER, DROP), conectivitate Python-BD (Connection, Cursor), Matplotlib (linie, bară, histogramă, box-plot), Pandas (DataFrame, statistici, filtrare), Scikit-learn (codificare, normalizare, clasificare, regresie, grupare, antrenare, predicție, evaluare)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="c-cs_mi_int-intensiv">C. CS_MI_INT — Intensiv</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Teme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anexa 49 (IX INT)</strong></td>
+<td>Caracteristicile listelor simple/complexe, stivă (LIFO), coadă (FIFO), liste de frecvență, tablouri unidimensionale C++, algoritmul lui Euclid, conversii de bază, manipularea cifrelor, ciurul lui Eratostene, Fibonacci, sortare prin selecție, sortare cu bule, tipuri de date, etapele dezvoltării unui program, conceptul de modul, gândirea computațională, operatori/metode ale listelor Python, acces la tablouri C++, operații cu fișiere (deschidere, citire, scriere, închidere), elemente GUI (butoane, etichete, câmpuri text, listbox, messagebox, meniuri), definirea/apelul funcțiilor, parametri/valori returnate, funcții predefinite Python (abs, round, int, sqrt, len, min, max, sum), sintaxa funcțiilor C++, funcții matematice</td>
+</tr>
+<tr>
+<td><strong>Anexa 50 (X INT)</strong></td>
+<td>Toate temele din X MI regulat PLUS: tupluri, cifrurile Caesar/monoalfabetic/Vigenere, algoritmul Flood Fill, clasa C++ string (insert, erase, find), structuri C++, implementări recursive aprofundate</td>
+</tr>
+<tr>
+<td><strong>Anexa 51 (XI INT)</strong></td>
+<td>Liste înlănțuite simplu/dublu/circular, grafuri (toate tipurile, inclusiv bipartit), grafuri ponderate, arbori cu rădăcină, arbori binari, structura de date heap, BFS, DFS, Prim, Roy-Warshall, Roy-Floyd, Kruskal, parcurgeri de arbori binari, operații BST, Dijkstra, backtracking, programare dinamică, memoizare, pointeri și adrese de memorie în C++, alocare dinamică a memoriei, implementarea listelor înlănțuite (statică/dinamică), reprezentarea grafurilor/arborilor, POO (membri ai clasei, public/privat, constructori, moștenire, încapsulare)</td>
+</tr>
+<tr>
+<td><strong>Anexa 52 (XII INT)</strong></td>
+<td>Toate temele din XII regulat PLUS: supertipuri/subtipuri de entități, arce, transferabilitate, rețele neuronale (neuroni artificiali, perceptron, feedforward, backpropagation), recunoașterea simplă a imaginilor, NumPy (tablouri, algebră liniară), tranzacții în baze de date (COMMIT, ROLLBACK, SAVEPOINT), vederi (views), controlul accesului (GRANT, REVOKE), metrici de eroare (MAE, MSE)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="d-stiinte-ale-naturii">D. Științe ale naturii</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Teme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anexa 53 (X SN)</strong></td>
+<td>Șiruri de caractere (acces, concatenare, comparare lexicografică), liste imbricate (2D de bază), căutare binară (simplificată), interclasarea listelor sortate (de bază), greedy (concepte de bază), divide et impera (de bază), metode Python pentru șiruri (split, lower, upper, strip, replace, count, isalpha, isdigit), operații de bază cu liste, noțiuni de tablouri 2D în C++</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="10-concluzii">10. Concluzii</h2>
+<p>Proiectul de curriculum de informatică al României pentru 2026 este <strong>o poveste a două extreme</strong>. Filiera intensivă produce elevi sofisticați din punct de vedere algoritmic, capabili să implementeze Dijkstra, programarea dinamică și rețele neuronale — un punct forte autentic. Dar la toate filierele, curriculumul îi învață pe elevi să rezolve probleme algoritmice izolat, în loc să construiască, să publice și să întrețină sisteme software reale în colaborare atât cu oameni, cât și cu IA.</p>
+<p>Cea mai urgentă nevoie nu sunt mai mulți algoritmi — ci <strong>alfabetizarea IA din prima zi</strong>, <strong>fundamentele ingineriei software</strong> și <strong>competențe practice care conectează învățarea din clasă cu modul în care tehnologia este efectiv creată și utilizată în 2026</strong>. Instrumentele și paradigmele dezvoltării software s-au schimbat fundamental în ultimii cinci ani. Curriculumul nu a ținut pasul.</p>
+<p>Vestea bună: fundamentul este solid. România nu trebuie să o ia de la zero. Trebuie să <strong>suprapună practici moderne pe baza algoritmică existentă</strong> — să adauge git în clasa a IX-a, alfabetizare API în clasa a X-a, concepte de IA pe tot parcursul și proiecte colaborative de absolvire în clasa a XII-a. Algoritmii rămân. Izolarea nu.</p>
+    </div>
+    <footer class="footer">
+      aprilie 2026
+    </footer>
+  </article>
+</div>
+</body>
+</html>
